@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <button class="btn btn-primary" (click)="addRestaurant()">Add Restaurant</button>
+            <ng-container *ngIf="restaurants.length > 0; else noRestaurants">
+                <div class="card" *ngFor="let restaurant of restaurants">
+                    <img [src]="restaurant.imgUrl" class="card-img-top" alt="Image" height="400px">
+                    <div class="card-body">
+                      <h2 class="card-title">{{restaurant.name}}</h2>
+                      <h4 class="card-text">{{restaurant.type.toUpperCase()}}</h4>
+                      <div class="button-group">
+                        <button class="btn btn-primary" (click)="editRestaurant(restaurant.id)">Edit</button>
+                        <button class="btn btn-danger" (click)="deleteRestaurant(restaurant.id)">Delete</button>
+                      </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-template #noRestaurants>
+                <h1>No Restaurants to Show</h1>
+                <h3>Please add some Restuarents</h3>
+            </ng-template>
+        </div>
+    </div>
+</div>

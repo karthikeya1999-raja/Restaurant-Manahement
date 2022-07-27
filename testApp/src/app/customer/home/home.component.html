@@ -1,0 +1,42 @@
+<div class="container-fulid">
+    <div class="row">
+        <div class="col-7">
+            <div class="center">
+                <h1>Wellcome to the Application</h1>
+                <h3>Order your Food from any Restaurants with Best Price</h3>
+                <form [formGroup]="searchForm">
+                    <div class="row">
+                        <div class="col">
+                            <label for="filter" class="form-label">Select the type of Restaurant</label>
+                            <select name="filter" id="filter" class="form-select" formControlName="filter"
+                                (change)="filter()">
+                                <option value="" [selected]="true" [disabled]="true">Select here</option>
+                                <option value="veg">Veg Restaurant</option>
+                                <option value="non-veg">Non veg Restaurant</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="tabel">
+                <ng-container *ngIf="restaurants.length > 0; else noRestaurants">
+                    <div class="card" *ngFor="let restaurant of filteredRestaurants">
+                        <img [src]="restaurant.imgUrl" class="card-img-top" alt="Image" height="400px">
+                        <div class="card-body">
+                            <h2 class="card-title">{{restaurant.name}}</h2>
+                            <h4 class="card-text">{{restaurant.type.toUpperCase()}}</h4>
+                            <button class="btn btn-primary" (click)="orderHere(restaurant.id)">Order here</button>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-template #noRestaurants>
+                    <h1>No Restaurants to Show</h1>
+                    <h3>Please contact admin for more details</h3>
+                </ng-template>
+            </div>
+        </div>
+        <div class="col-5">
+            <app-cart></app-cart>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<h1><span>Here is your Cart</span><span class="badge rounded-pill bg-info text-dark">{{totalItems()}}</span></h1>
+<div class="center">
+    <button class="btn btn-primary" (click)="getMyOrders()">{{!viewHistory? "View History" : "Back to Cart"}}</button>
+</div>
+<div *ngIf="!viewHistory; else elseBlock">
+    <div *ngIf="restaurant !== null; else elseBlock1">
+        <ng-container *ngFor="let dish of restaurant.dishes">
+            <div class="card" *ngIf="dish.quantity > 0">
+                <img class="card-img-top" [src]="dish.imgUrl" [alt]="dish.name">
+                <div class="card-body">
+                    <h3 class="card-title">{{dish.name}}</h3>
+                    <p class="card-text">Cost per Dish: {{dish.cost | currency:"INR"}}</p>
+                    <p class="card-text">Quantity: {{dish.quantity}}</p>
+                    <p class="card-text">Cost of Item: {{+dish.cost * dish.quantity}}</p>
+                </div>
+            </div>
+        </ng-container>
+        <div *ngIf="totalCost>0">
+            <h2>Total cost is {{totalCost | currency:"INR"}}</h2>
+            <div class="center">
+                <button class="btn btn-primary" (click)="placeOrder()">Order</button>
+            </div>
+        </div>
+    </div>
+    <ng-template #elseBlock1>
+        <h1>No Items In Cart...</h1>
+    </ng-template>
+</div>
+<ng-template #elseBlock>
+    <h1>Your Order History is bellow</h1>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Restaurant</th>
+                <th>Items</th>
+                <th>Total Cost</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of myOrdersHistory; let i = index">
+                <td>{{order.restaurantName}}</td>
+                <td>
+                    <tr>
+                        <th>Name</th>
+                        <th>Cost</th>
+                        <th>Quantity</th>
+                    </tr>
+                    <tr *ngFor="let dish of order.dishes">
+                        <td>{{dish.dishName}}</td>
+                        <td class="text-align">{{dish.dishCost | currency:"INR":'symbol':'1.0-0'}}</td>
+                        <td class="text-align">{{dish.dishQuantity}}</td>
+                    </tr>
+                </td>
+                <td>{{calcTotalCostForHistoryDish(order.dishes) | currency: "INR":'symbol':'1.0-0'}}</td>
+                <td>{{order.orderedDate.substring(0,9)}}</td>
+                <td>{{order.orderedDate.substring(10)}}</td>
+                <td><button class="btn btn-info" (click)="orderAgain(i)">Order again</button></td>
+            </tr>
+        </tbody>
+    </table>
+</ng-template>

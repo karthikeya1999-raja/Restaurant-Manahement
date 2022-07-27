@@ -1,0 +1,23 @@
+.container-fulid{
+    width: 98%;
+    margin: 0 auto;
+}
+
+.center{
+    width: 50rem;
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+h1,h3{
+    text-align: center;
+}
+
+.card{
+    margin: 10px auto;
+    width: 47rem;
+}
+
+.form-label{
+    font-size: 15px;
+}

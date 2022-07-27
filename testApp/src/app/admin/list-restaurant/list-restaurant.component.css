@@ -1,0 +1,17 @@
+.container{
+    margin: 10px auto;
+}
+
+.card{
+    margin: 10px auto;
+    width: 38rem;
+}
+
+h1,h3{
+    text-align: center;
+}
+
+.button-group{
+    display: flex;
+    column-gap: 20px;
+}

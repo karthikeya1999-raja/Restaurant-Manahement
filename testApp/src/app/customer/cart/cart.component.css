@@ -1,0 +1,27 @@
+h1,h2{
+    text-align: center;
+    margin: 5px auto;
+}
+
+.center{
+    width: 100px;
+    margin: 10px auto;
+}
+
+.card{
+    margin: 5px auto;
+    width: 15rem;
+}
+
+.card-body h3{
+    font-size: larger;
+    font-weight: 600;
+}
+
+.text-align{
+    text-align: center;
+}
+
+.badge{
+    margin-left: 5px;
+}

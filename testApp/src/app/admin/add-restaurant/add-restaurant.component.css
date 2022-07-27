@@ -1,0 +1,33 @@
+.center{
+    width: 600px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.center h1{
+    text-align: center;
+}
+
+.form-label{
+    font-size: 15px;
+}
+
+.row{
+    margin-bottom: 5px;
+}
+
+.button{
+    width: 300px;
+    margin: 10px auto;
+}
+
+.button-group{
+    display: flex;
+    column-gap: 12px;
+    width: 150px;
+    margin: 5px auto;
+}
+
+.mybtn{
+    width: 80px;
+}

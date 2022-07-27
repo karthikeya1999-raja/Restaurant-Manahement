@@ -1,0 +1,70 @@
+<div class="container center">
+    <h1>Give the details to add Restaurant</h1>
+    <form class="form-group" [formGroup]="restaurantForm">
+        <div class="row">
+            <div class="col">
+                <label for="name" class="form-label">Restaurant Name</label>
+                <input type="text" class="form-control" name="name" id="name" formControlName="name"
+                placeholder="Restaurant Name">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="type" class="form-label">Restaurant Type</label>
+                <select name="type" id="type" class="form-select" formControlName="type">
+                    <option value=""[selected]="true">Please select</option>
+                    <option value="veg">Veg</option>
+                    <option value="non-veg">Non-Veg</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="imgUrl" class="form-label">Image URL</label>
+                <input type="text" class="form-control" name="imgUrl" id="imgUrl" formControlName="imgUrl"
+                placeholder="Image URL">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col" formArrayName="dishes">
+                <label for="dishes" class="form-label">Dishes</label>
+                <div *ngFor="let dish of dishes.controls; let i=index" id="dishes">
+                    <div [formGroupName]="i" class="row">
+                        <div class="col-3">
+                            <label for="name" class="form-label">Dish Name</label>
+                            <input type="text" class="form-control" id="name" name="name" 
+                            formControlName="name" placeholder="Dish name">
+                        </div>
+                        <div class="col-3">
+                            <label for="imgUrl" class="form-label">Cost</label>
+                            <input type="text" class="form-control" id="imgUrl" name="imgUrl" 
+                            formControlName="imgUrl" placeholder="Image URL">
+                        </div>
+                        <div class="col-3">
+                            <label for="cost" class="form-label">Cost</label>
+                            <input type="text" class="form-control" id="cost" name="cost" 
+                            formControlName="cost" placeholder="cost">
+                        </div>
+                        <div class="col-3">
+                            <button class="btn btn-danger form-control" (click)="deleteDish(i)" 
+                            >Delete</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="button">
+                    <button class="btn btn-primary form-control" (click)="addDish()">Add dish</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="button-group">
+                    <input type="submit" class="btn btn-success mybtn" value="Submit"
+                    [disabled]="restaurantForm.invalid" (click)="submit()">
+                    <input type="button" class="btn btn-primary mybtn" value="Clear"
+                    (click)="clear()">
+               </div>
+            </div>
+        </div>
+    </form>
+</div>

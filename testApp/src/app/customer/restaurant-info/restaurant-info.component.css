@@ -1,0 +1,35 @@
+.container-fulid{
+    width: 98%;
+    margin: 0 auto;
+}
+
+h1,h2,h3{
+    text-align: center;
+}
+
+.center{
+    width: 46rem;
+    margin: 1rem auto;
+}
+
+.card{
+    display: inline-block;
+    width: 20rem;
+    max-width: 20rem;
+    margin: 0 20px 20px 20px;
+}
+
+.card h3{
+    font-weight: 800;
+}
+
+.button-group{
+    width: 90px;
+    margin: 0 auto;
+}
+
+.button-group .btn{
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+}

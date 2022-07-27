@@ -1,0 +1,86 @@
+<div class="center">
+    <h1>Register to Restaurent Food delivary System</h1>
+    <form [formGroup]="signupForm" (submit)="signUp()">
+        <div class="row">
+            <div class="col">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control" type="text" id="name" name="name" placeholder="Name"
+                formControlName="name">
+            </div>
+        </div>
+        <div *ngIf="signupForm.get('name')?.invalid">
+            <div *ngIf="signupForm.get('name')?.touched && 
+            signupForm.get('name')?.hasError('required')">
+                <p class="text-danger">Name is <strong>Required</strong></p>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label class="form-label" for="phone">Phone</label>
+                <input class="form-control" type="text" name="phone" id="phone" placeholder="Phone number"
+                formControlName="phone">
+            </div>
+        </div>
+        <div *ngIf="signupForm.get('phone')?.invalid">
+            <div *ngIf="signupForm.get('phone')?.touched && 
+            signupForm.get('phone')?.hasError('required')">
+                <p class="text-danger">Phone is <strong>Required</strong></p>
+            </div>
+            <div *ngIf="signupForm.get('phone')?.touched && 
+            signupForm.get('phone')?.hasError('pattern')">
+                <p class="text-danger">Phone should be 10 digit <strong>Number</strong></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-control" type="email" id="email" name="email" placeholder="Email"
+                formControlName="email">
+            </div>
+        </div>
+        <div *ngIf="signupForm.get('email')?.invalid">
+            <div *ngIf="signupForm.get('email')?.touched && 
+            signupForm.get('email')?.hasError('required')">
+                <p class="text-danger">Email is <strong>Required</strong></p>
+            </div>
+            <div *ngIf="signupForm.get('email')?.touched && 
+            signupForm.get('email')?.hasError('email')">
+                <p class="text-danger">Email should be in pattern <strong>some@some.some</strong></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label class="form-label" for="password">Password</label>
+                <input class="form-control" type="password" name="password" id="password" placeholder="password"
+                formControlName="password">
+            </div>
+        </div>
+        <div *ngIf="signupForm.get('password')?.invalid">
+            <div *ngIf="signupForm.get('password')?.touched && 
+            signupForm.get('password')?.hasError('required')">
+                <p class="text-danger">Password is <strong>Required</strong></p>
+            </div>
+            <div *ngIf="signupForm.get('password')?.touched && 
+            signupForm.get('password')?.hasError('minlength')">
+                <p class="text-danger">Password should contain <strong>atleast 6 characters</strong></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label class="form-label" for="cpassword">Confirm Password</label>
+                <input class="form-control" type="password" name="cpassword" id="cpassword" placeholder="Confirm password"
+                formControlName="cpassword">
+            </div>
+        </div>
+        <div *ngIf=" signupForm.get('cpassword').touched && 
+            signupForm.get('cpassword')?.value != signupForm.get('password')?.value">
+            <p class="text-danger">Password is <strong>not matching</strong></p>
+         </div>
+        <div class="button-group">
+            <input type="submit" class="btn btn-success" value="Submit" [disabled]="signupForm.invalid || 
+            signupForm.get('cpassword')?.value != signupForm.get('password')?.value">
+            <input type="button" class="btn btn-primary" value="Reset" (click)="reset()">
+        </div>
+    </form>
+    <a class="login btn btn-link" routerLink="/login">Already a user? signin</a>
+</div>

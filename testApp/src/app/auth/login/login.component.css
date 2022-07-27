@@ -1,0 +1,28 @@
+.center{
+    width: 450px;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.center h1{
+    text-align: center;
+}
+
+.form-label{
+    font-size: 15px;
+}
+
+.button-group, .signup{
+    display: flex;
+    column-gap: 15px;
+    width: 200px;
+    margin: 5px auto;
+}
+
+.row{
+    margin-bottom: 5px;
+}
+
+.btn-link{
+    text-decoration: none;
+}
