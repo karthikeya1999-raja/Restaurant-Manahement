@@ -93,5 +93,4 @@ export class AddRestaurantComponent implements OnInit {
       this.router.navigate(['/login']);
     }
   }
-
 }

@@ -11,8 +11,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   private localStorageData: string | null = "";
-  private customers :Customer[] = [];
-  private admins: Customer[] = [];
+  
   private user: Customer;
   private login = false;
   private admin = false;
@@ -28,22 +27,6 @@ export class AuthService {
 
   isLOggedIn(){
     return this.login;
-  }
-
-  getAdmins(){
-    this.localStorageData = localStorage.getItem("admins");
-    if(this.localStorageData == null){
-      this.localStorageData = "[]";
-    }
-    this.admins = JSON.parse(this.localStorageData);
-  }
-
-  getCustomers(){
-    this.localStorageData = localStorage.getItem("customers");
-    if(this.localStorageData == null){
-      this.localStorageData = "[]";
-    }
-    this.customers = JSON.parse(this.localStorageData);
   }
 
   signUp(customer: Customer){

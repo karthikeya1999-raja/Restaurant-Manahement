@@ -56,5 +56,4 @@ export class RestaurantInfoComponent implements OnInit {
      this.router.navigate(['/login']);
    }
   }
-
 }

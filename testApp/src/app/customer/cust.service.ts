@@ -14,8 +14,6 @@ export class CustService {
   private restaurants: Restaurant[] = [];
   private myRestaurant: Restaurant;
   myRestaurantDataEmmitter = new BehaviorSubject<Restaurant>(null);
-  private allOrders: Order[] = [];
-  private filteredRestaurants: Restaurant[] = [];
   private BASE_URL = "http://localhost:41223/api/Customer/";
 
   constructor(private authService: AuthService,
